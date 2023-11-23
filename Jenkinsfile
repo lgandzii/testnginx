@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'if [ $(docker ps -aq) ]; then docker ps -aq | xargs docker stop;fi'
                 sh 'docker system prune -af --volumes'
-                sh 'docker build -t lgandzii/testnginx -f Dockerfile'
+                sh 'docker build . -t lgandzii/testnginx -f Dockerfile'
                 sh 'docker run --name nginxtest -d -p 80:80 lgandzii/testnginx'
                                                  
                 }
